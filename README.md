@@ -13,7 +13,7 @@ In this readme you will see:
 
 # Backend
 
-This backend is created using Node.js with Express.js, Prisma ORM and jwt authentication
+This backend is created using [Node.js](https://nodejs.org/) with [Express.js](https://expressjs.com/), [Prisma ORM](https://www.prisma.io) and [JWT authentication](https://jwt.io)
 
 ## Setup and run API
 
@@ -72,7 +72,7 @@ In this API we have 4 routes
 
 # Frontend
 
-This frontend is created using React.js with Next.js, SSR (server side rendering) and tailwind css
+This frontend is created using [React.js](https://pt-br.reactjs.org) with [Next.js](https://nextjs.org), SSR (server side rendering) and [Tailwind css](https://tailwindcss.com)
 
 ## Setup and run frontend
 
