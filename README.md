@@ -2,11 +2,14 @@
 
 In this readme you will see:
 
-- [How to run the API](#how-to-run-the-api)
-- [API routes](#api-routes)
+- [Backend](#backend)
+  - [Setup and run API](#setup-and-run-api)
+  - [API Routes](#api-routes)
+- [Frontend](#frontend)
+  - [Setup and run frontend](#setup-and-run-frontend)
 - [Other commands](#other-commands)
   - [Linter](#linter)
-  - [Tests](#tests)
+  - [Test](#test)
 
 # Backend
 
@@ -112,7 +115,7 @@ npm run lint
 ```
 to see if the project has linting errors, if this command do not show nothing, it means that do not has linting errors in the project, but if you change, for example, a double quoted string to a single quoted string and run the command again, the linting will show an error.
 
-## Tests
+## Test
 You can also run
 ```zsh
 npm run test
