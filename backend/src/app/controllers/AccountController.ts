@@ -91,6 +91,12 @@ class AccountController {
         return res.status(404).json({ error: "Logged account not found" });
       }
 
+      if (cpfToTransfer === loggedAccount.cpf) {
+        return res.status(401).json({
+          error: "you can not transfer money to yourself",
+        });
+      }
+
       if (transferValue > loggedAccount.balance) {
         return res.status(401).json({
           error: "you do not have enough balance to transfer this amount",

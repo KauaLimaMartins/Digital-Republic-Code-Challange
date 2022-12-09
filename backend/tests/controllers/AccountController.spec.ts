@@ -80,5 +80,22 @@ describe("AccountController", () => {
         "you do not have enough balance to transfer this amount"
       );
     });
+
+    it("Should not be able to transfer money to yoursel", async () => {
+      const response = await request(app)
+        .post("/api/account/transfer")
+        .send({
+          cpfToTransfer: "111.222.333-44",
+          transferValue: 50,
+        })
+        .set({
+          Authorization: `Bearer ${authToken}`,
+        });
+
+      expect(response.status).toBe(401);
+      expect(response.body.error).toBe(
+        "you can not transfer money to yourself"
+      );
+    });
   });
 });
