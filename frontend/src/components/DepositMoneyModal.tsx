@@ -1,5 +1,6 @@
 import { useState, FormEvent } from "react";
 import { MdClose } from "react-icons/md";
+
 import { api } from "../services/api";
 import { CurrencyInput } from "./CurrencyInput";
 import { Loading } from "./Loading";
@@ -91,7 +92,7 @@ export function DepositMoneyModal({
 
       setTimeout(() => {
         setShowToast(false);
-      }, 5000);
+      }, 3000);
     }
   }
 
@@ -126,7 +127,7 @@ export function DepositMoneyModal({
               onSubmit={handleSubmitForm}
             >
               <p className="text-lg text-gray-900 text-center">
-                Quando você deseja depositar?
+                Quanto você deseja depositar?
               </p>
               <p className="text-sm mb-3 text-gray-900 text-center">
                 Obs: Não é permitido depositar valores maiores que R$2.000,00

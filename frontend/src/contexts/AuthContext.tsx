@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from "react";
 import { setCookie, parseCookies } from "nookies";
-import Router from "next/router";
 
 import { api } from "../services/api";
 
@@ -25,10 +24,6 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
     api.defaults.headers["Authorization"] = `Bearer ${data.token}`;
 
     setAccount({ token: data.token, full_name: data.full_name });
-
-    setTimeout(() => {
-      Router.push("/");
-    }, 1000);
   }
 
   return (

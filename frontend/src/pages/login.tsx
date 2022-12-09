@@ -11,8 +11,10 @@ import { GetServerSideProps } from "next";
 import { parseCookies } from "nookies";
 import { SimpleButton } from "../components/SimpleButton";
 import { SimpleInput } from "../components/SimpleInput";
+import { useRouter } from "next/router";
 
 export default function LoginPage() {
+  const router = useRouter();
   const { signIn } = useContext(AuthContext);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -33,6 +35,8 @@ export default function LoginPage() {
 
     try {
       await signIn(fullNameValue, cpfValue);
+
+      router.push("/");
     } catch (err) {
       setIsLoading(false);
 
@@ -57,7 +61,6 @@ export default function LoginPage() {
     <>
       <Head>
         <title>Login</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       {isLoading && <Loading />}

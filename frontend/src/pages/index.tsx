@@ -1,7 +1,10 @@
-import { GetServerSideProps } from "next";
 import Head from "next/head";
+import { GetServerSideProps } from "next";
+import { useRouter } from "next/router";
 import { parseCookies } from "nookies";
 import { useState } from "react";
+import { MdExitToApp } from "react-icons/md";
+
 import { DepositMoneyModal } from "../components/DepositMoneyModal";
 import { SimpleButton } from "../components/SimpleButton";
 import { TransferMoneyModal } from "../components/TransferMoneyModal";
@@ -14,14 +17,14 @@ interface IHomePageProps {
 }
 
 export default function HomePage({ account }: IHomePageProps) {
+  const router = useRouter();
   const [isOpenDepositModal, setIsOpenDepositModal] = useState(false);
   const [isOpenTransferModal, setIsOpenTransferModal] = useState(false);
 
   return (
     <>
       <Head>
-        <title>Login</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Início</title>
       </Head>
 
       {isOpenDepositModal && (
@@ -42,9 +45,30 @@ export default function HomePage({ account }: IHomePageProps) {
         <div className="h-full flex items-center justify-center">
           <div className="bg-white p-8 border rounded-xl">
             <div>
-              <h1 className="text-3xl mb-2 text-gray-800">
-                Bem vindo, {account.full_name}!
-              </h1>
+              <div className="w-full flex items-center justify-between">
+                <h1 className="text-3xl mb-2 text-gray-800 mr-4">
+                  Bem vindo, {account.full_name}!
+                </h1>
+
+                <button
+                  className="text-red-600"
+                  title="Sair da conta"
+                  onClick={() => {
+                    document.cookie.split(";").forEach(function (c) {
+                      document.cookie = c
+                        .replace(/^ +/, "")
+                        .replace(
+                          /=.*/,
+                          "=;expires=" + new Date().toUTCString() + ";path=/"
+                        );
+                    });
+
+                    router.reload();
+                  }}
+                >
+                  <MdExitToApp size={22} />
+                </button>
+              </div>
 
               <span className="text-lg text-gray-800">
                 Saldo atual:{" "}

@@ -13,7 +13,7 @@ type context =
   | undefined;
 
 export function getAPIClient(ctx?: context) {
-  const { token } = parseCookies(ctx);
+  const { "auth-token": token } = parseCookies(ctx);
 
   const api = axios.create({
     baseURL: "http://localhost:4000/api",

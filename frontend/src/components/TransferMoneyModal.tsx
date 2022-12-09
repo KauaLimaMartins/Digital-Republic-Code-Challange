@@ -1,6 +1,7 @@
 import { AxiosError } from "axios";
 import { useState, FormEvent } from "react";
 import { MdClose } from "react-icons/md";
+
 import { api } from "../services/api";
 import { CPFInput } from "./CPFInput";
 import { CurrencyInput } from "./CurrencyInput";
@@ -52,7 +53,7 @@ export function TransferMoneyModal({
     }
 
     if (formattedDeposit > account.balance) {
-      setToastText("Você  não tem saldo suficiente para transferir esse valor");
+      setToastText("Você não tem saldo suficiente para transferir esse valor");
       setToastType("error");
       setShowToast(true);
 
@@ -94,6 +95,12 @@ export function TransferMoneyModal({
       if (err instanceof AxiosError) {
         if (err.response?.data.error === "Account to transfer not found") {
           setToastText("CPF não cadastrado");
+        }
+
+        if (
+          err.response?.data.error === "you can not transfer money to yourself"
+        ) {
+          setToastText("Você nao pode transferir dinheiro para si mesmo");
         }
       }
 
@@ -137,7 +144,7 @@ export function TransferMoneyModal({
               onSubmit={handleSubmitForm}
             >
               <p className="text-lg text-gray-900 text-center">
-                Para quem você deseja depositar?
+                Para quem você deseja transferir?
               </p>
               <p className="text-sm mb-3 text-gray-900 text-center">
                 Obs: as transferências não tem valor máximo, mas não podem ser

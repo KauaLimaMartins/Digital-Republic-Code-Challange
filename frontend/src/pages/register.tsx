@@ -73,7 +73,6 @@ export default function RegisterPage() {
     <>
       <Head>
         <title>Registro</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       {isLoading && <Loading />}
